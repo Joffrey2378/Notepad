@@ -1,0 +1,19 @@
+[
+  {
+    "outputType": {
+      "type": "APK"
+    },
+    "apkInfo": {
+      "type": "MAIN",
+      "splits": [],
+      "versionCode": 1,
+      "versionName": "1.0-first",
+      "enabled": true,
+      "outputFile": "app-firstFlavor-release.apk",
+      "fullName": "firstFlavorRelease",
+      "baseName": "firstFlavor-release"
+    },
+    "path": "app-firstFlavor-release.apk",
+    "properties": {}
+  }
+]
