@@ -3,6 +3,6 @@
 /build
 local.properties
 /*/build/
-.idea
+.idea/
 gradle/
 *.log
