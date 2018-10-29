@@ -11,7 +11,7 @@ import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT2_OR
 import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT3_GREEN;
 import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT3_PINK;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwapBehavior {
 
     public Fragment secondFrag;
     public Fragment thirdFrag;

@@ -44,6 +44,6 @@ public class BackgroundFrag extends Fragment {
     public void onPause() {
         super.onPause();
         Bundle arguments = this.getArguments();
-        arguments.putInt(KEY_COLOR, ((ColorDrawable) this.getView().getBackground()).getColor());
+        arguments.putInt(KEY_COLOR, ((ColorDrawable) getView().getBackground()).getColor());
     }
 }

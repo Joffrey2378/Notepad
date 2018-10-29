@@ -1,16 +1,12 @@
 package com.example.heorhii_dubinin.trickyfragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import static android.graphics.Color.BLUE;
-import static android.graphics.Color.GRAY;
-import static android.graphics.Color.YELLOW;
 
 
 public class FirstFrag extends Fragment implements View.OnClickListener {
@@ -23,6 +19,8 @@ public class FirstFrag extends Fragment implements View.OnClickListener {
     private Button btnColor;
     private Button btnSwap;
 
+    private SwapBehavior swapBehavior;
+
     public FirstFrag() {
         // Required empty public constructor
     }
@@ -30,6 +28,7 @@ public class FirstFrag extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @Override
@@ -47,13 +46,23 @@ public class FirstFrag extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof SwapBehavior) {
+            swapBehavior = (SwapBehavior) getActivity();
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_color:
-                ((MainActivity)getActivity()).swapColor();
+                swapBehavior.swapColor();
                 break;
             case R.id.btn_swap:
-                ((MainActivity)getActivity()).swapFragments();
+                swapBehavior.swapFragments();
                 break;
         }
     }
