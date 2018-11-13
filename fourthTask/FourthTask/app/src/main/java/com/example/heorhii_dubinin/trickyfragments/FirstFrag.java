@@ -21,14 +21,9 @@ public class FirstFrag extends Fragment implements View.OnClickListener {
 
     private SwapBehavior swapBehavior;
 
-    public FirstFrag() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
     }
 
     @Override

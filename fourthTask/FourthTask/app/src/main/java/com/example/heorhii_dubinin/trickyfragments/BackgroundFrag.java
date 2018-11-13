@@ -46,4 +46,11 @@ public class BackgroundFrag extends Fragment {
         Bundle arguments = this.getArguments();
         arguments.putInt(KEY_COLOR, ((ColorDrawable) getView().getBackground()).getColor());
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {     //finish this method saving state
+        super.onSaveInstanceState(outState);
+        Bundle arguments = this.getArguments();
+        arguments.putInt(KEY_COLOR, ((ColorDrawable) getView().getBackground()).getColor());
+    }
 }

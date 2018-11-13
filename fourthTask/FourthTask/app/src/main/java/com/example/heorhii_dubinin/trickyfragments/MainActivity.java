@@ -2,7 +2,6 @@ package com.example.heorhii_dubinin.trickyfragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -13,12 +12,10 @@ import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT3_PI
 
 public class MainActivity extends AppCompatActivity implements SwapBehavior {
 
-    public Fragment secondFrag;
-    public Fragment thirdFrag;
-    boolean isColorClicked = false;
-    boolean isSwapClicked = false;
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+    private Fragment secondFrag;
+    private Fragment thirdFrag;
+    private boolean isColorClicked = false;
+    private boolean isSwapClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +24,8 @@ public class MainActivity extends AppCompatActivity implements SwapBehavior {
         secondFrag = BackgroundFrag.newInstance("fr2", FRAGMENT2_ORANGE);
         thirdFrag = BackgroundFrag.newInstance("fr3", FRAGMENT3_GREEN);
 
-        transaction.add(R.id.placeholder_for_fragment_two, secondFrag);
-        transaction.add(R.id.placeholder_for_fragment_three, thirdFrag);
-        transaction.commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.placeholder_for_fragment_two, secondFrag)
+                .add(R.id.placeholder_for_fragment_three, thirdFrag).commit();
     }
 
     public void swapColor() {
