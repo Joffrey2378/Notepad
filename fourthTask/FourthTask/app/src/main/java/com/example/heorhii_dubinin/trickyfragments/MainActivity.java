@@ -3,7 +3,6 @@ package com.example.heorhii_dubinin.trickyfragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT2_BLUE;
 import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT2_ORANGE;
@@ -41,24 +40,15 @@ public class MainActivity extends AppCompatActivity implements SwapBehavior {
     }
 
     public void swapFragments() {
+        Fragment fragment2 = getSupportFragmentManager().findFragmentById(R.id.placeholder_for_fragment_two);
+        Fragment fragment3 = getSupportFragmentManager().findFragmentById(R.id.placeholder_for_fragment_three);
         getSupportFragmentManager().beginTransaction()
-                .remove(secondFrag)
-                .remove(thirdFrag)
+                .remove(fragment2)
+                .remove(fragment3)
+                .commitNow();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.placeholder_for_fragment_two, fragment3)
+                .replace(R.id.placeholder_for_fragment_three, fragment2)
                 .commit();
-        getSupportFragmentManager().executePendingTransactions();
-        if (!isSwapClicked) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.placeholder_for_fragment_two, thirdFrag)
-                    .replace(R.id.placeholder_for_fragment_three, secondFrag)
-                    .commit();
-            Toast.makeText(this, "first line " + isSwapClicked, Toast.LENGTH_SHORT).show();
-            isSwapClicked = true;
-        } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.placeholder_for_fragment_three, thirdFrag).
-                    replace(R.id.placeholder_for_fragment_two, secondFrag).commit();
-            Toast.makeText(this, "second line " + isSwapClicked, Toast.LENGTH_SHORT).show();
-            isSwapClicked = false;
-        }
     }
 }
-
