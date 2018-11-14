@@ -11,10 +11,9 @@ import static com.example.heorhii_dubinin.trickyfragments.FirstFrag.FRAGMENT3_PI
 
 public class MainActivity extends AppCompatActivity implements SwapBehavior {
 
-    private Fragment secondFrag;
-    private Fragment thirdFrag;
+    private BackgroundFrag secondFrag;
+    private BackgroundFrag thirdFrag;
     private boolean isColorClicked = false;
-    private boolean isSwapClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +27,10 @@ public class MainActivity extends AppCompatActivity implements SwapBehavior {
     }
 
     public void swapColor() {
-        getSupportFragmentManager()
-                .findFragmentById(R.id.placeholder_for_fragment_three)
-                .getView()
-                .setBackgroundColor(isColorClicked ? FRAGMENT3_GREEN : FRAGMENT3_PINK);
-        getSupportFragmentManager()
-                .findFragmentById(R.id.placeholder_for_fragment_two)
-                .getView()
-                .setBackgroundColor(isColorClicked ? FRAGMENT2_ORANGE : FRAGMENT2_BLUE);
+        secondFrag = (BackgroundFrag) getSupportFragmentManager().findFragmentById(R.id.placeholder_for_fragment_two);
+        thirdFrag = (BackgroundFrag) getSupportFragmentManager().findFragmentById(R.id.placeholder_for_fragment_three);
+        secondFrag.colors(isColorClicked ? FRAGMENT2_ORANGE : FRAGMENT2_BLUE);
+        thirdFrag.colors(isColorClicked ? FRAGMENT3_GREEN : FRAGMENT3_PINK);
         isColorClicked = !isColorClicked;
     }
 

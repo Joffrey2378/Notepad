@@ -40,15 +40,13 @@ public class BackgroundFrag extends Fragment {
         backgroundView.setBackgroundColor(backgroundColor);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        Bundle arguments = this.getArguments();
-        arguments.putInt(KEY_COLOR, ((ColorDrawable) getView().getBackground()).getColor());
+    public void colors(int color) {
+        this.getView().setBackgroundColor(color);
+        getArguments().putInt(KEY_COLOR, color);
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {     //finish this method saving state
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         Bundle arguments = this.getArguments();
         arguments.putInt(KEY_COLOR, ((ColorDrawable) getView().getBackground()).getColor());
