@@ -21,7 +21,7 @@ public abstract class NoteDatabase extends RoomDatabase {
         }
     };
 
-    public static synchronized NoteDatabase getInstance(Context context) {
+    static synchronized NoteDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), NoteDatabase.class, "note_database")
                     .fallbackToDestructiveMigration()
@@ -42,9 +42,7 @@ public abstract class NoteDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            noteDao.insert(new Note("Note one", "Description one", 5));
-            noteDao.insert(new Note("Note two", "Description two", 7));
-            noteDao.insert(new Note("Note three", "Description three", 3));
+            noteDao.insert(new Note("New note", "Add your notes", 1));
             return null;
         }
     }

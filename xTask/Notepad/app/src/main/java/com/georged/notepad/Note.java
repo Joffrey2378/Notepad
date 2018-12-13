@@ -34,7 +34,7 @@ public class Note {
         return description;
     }
 
-    public int getPriority() {
+    int getPriority() {
         return priority;
     }
 }
